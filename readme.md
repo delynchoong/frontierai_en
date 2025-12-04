@@ -35,6 +35,16 @@ Microsoft Agent Framework은 Azure AI Foundry에서 제공하는 에이전트 �
     pip install agent-framework --pre
     ```
 
+* 터미널 열기 및 리포지토리 복제
+
+>  VS Code에서 새 터미널 창을 엽니다:
+
+터미널에서 다음 명령어를 실행하여 리포지토리를 복제합니다:
+
+```bash 
+git clone https://github.com/jeongaelee/frontierai.git
+```
+
 ## 사용 Azure 리소스 및 환경
 
 * Azure OpenAI
