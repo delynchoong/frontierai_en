@@ -6,7 +6,7 @@
 
 ## 사전 준비 사항
 - [Step 1: Workshop Setup](2_00_setup.md) 완료
-- [Step 2: MCP Setup (uv)](01_mcp_uv.md) 완료
+- [Step 2: MCP Setup (uv)](2_01_mcp_uv.md) 완료
 - MCP 구동 확인: `http://localhost:8000/mcp`
 - uv 설치 완료
 
@@ -153,4 +153,5 @@
 
 
 **📌 Important:** Agent Framework은 **React 프론트엔드**와 함께 사용할 때 내부 에이전트 프로세스, 오케스트레이터 계획 및 도구 호출을 실시간으로 시각화하는 데 가장 적합합니다.
+
 
