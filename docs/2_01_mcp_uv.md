@@ -52,6 +52,11 @@ cd ../..
 3a: Import FastMCP
 
 아래의 import 문을 `mcp_service.py` 파일 상단에 추가하세요:
+
+    > Note: fastmcp는 Microsoft Agent Framework의 MCP 구현체입니다. MCP 서버를 쉽게 설정하고 실행할 수 있는 도구와 데코레이터를 제공합니다.
+    > **Action Items:**
+    > Note: fastmcp가 설치되어있지 않은 경우, `python -m pip install fastmcp` 명령어를 사용하여 설치하세요.
+    
 ```python
 from fastmcp import FastMCP
 ```
