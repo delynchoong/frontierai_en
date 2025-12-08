@@ -124,14 +124,7 @@
     $response.Content
     ```
     <img src="media/02_backend_chat_response.png" />
- 
-  - A sample curl command to validate things are online:
-    ```bash
-    `curl -X 'POST' 'http://localhost:7000/chat'  -H 'accept: application/json'  -H 'Content-Type: application/json'  -d '{"session_id": "123", "prompt": "What can you help me with?"}'`
-    ```
 
-- Backend가 MCP 서버와 통신할 수 있어야 합니다.
-  - 온라인 상태를 확인하는 샘플 curl 명령어: `curl -X 'POST' 'http://localhost:7000/chat'  -H 'accept: application/json'  -H 'Content-Type: application/json'  -d '{"session_id": "123", "prompt": "What can you help me with?"}'`
 
     **Note:** 로컬 서버는 AI 응답을 반환하지 않습니다. 브라우저에서 확인하는 경우 아래와 같은 에러는 예상되는 동작입니다.
 
@@ -156,3 +149,4 @@
 
 
 **📌 Important:** Agent Framework은 **React 프론트엔드**와 함께 사용할 때 내부 에이전트 프로세스, 오케스트레이터 계획 및 도구 호출을 실시간으로 시각화하는 데 가장 적합합니다.
+
