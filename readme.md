@@ -58,8 +58,8 @@ git clone https://github.com/jeongaelee/frontierai.git
 * ./1_basic_agent/.env.sample ==> 1_basic-concept-with-msaf.ipynb을 위한 .env
 
 ### Part 2의 Hands-on Lab에서는 2개의 .env 파일을 사용합니다.
-* ./agentic_ai/application/.env.sample ==> Agent application을 위한 .env
 * ./mcp/.env.sample ==> MCP server를 위한 .env
+* ./agentic_ai/application/.env.sample ==> Agent application을 위한 .env
 
 ## 실습 순서
 
@@ -77,3 +77,4 @@ git clone https://github.com/jeongaelee/frontierai.git
 * Part 1의 basic-concept-with-msaf.ipynb 코드는 [Agent Innovator Lab](https://github.com/Azure/agent-innovator-lab)에서 차용 되었습니다. Agent Innovator Lab 리포지토리는 마이크로소프트의 AI GBB 팀에서 운영하는 Repo로 Microsoft Azure 기반으로 AI 에이전트 개발을 학습할 수 있는 실습 중심의 자료를 제공하고 있습니다. 이 리포지토리는 RAG 구현, 에이전트 설계 패턴, 평가 및 최적화 기법을 포함한 다양한 모듈을 통해 개발자가 실제 환경에서 에이전트를 구축하고 개선하는 경험을 지원합니다.
 
 * Part 2의 [Microsoft AI Agentic Workshop](https://github.com/aseangps/OpenAIWorkshop)은 마이크로소프트에서 제공하는 repo로 OpenAI 기반 지능형 솔루션을 구축하기 위한 워크숍 자료와 코드를 제공하고 있습니다. 이 리포지토리를 통해 개발자는 Microsoft Agent Framework와 Azure OpenAI 서비스를 활용해 단일 에이전트부터 멀티에이전트 아키텍처까지 다양한 패턴을 실습할 수 있습니다.
+
