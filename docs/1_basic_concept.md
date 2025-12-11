@@ -1,117 +1,116 @@
 # Partner Frontier AI Workshop
 
-## 코드 샘플로 Microsoft Agent Framework의 기본 컨셉 이해하기
+## Understanding Microsoft Agent Framework Basic Concepts with Code Samples
 
-### Microsoft Foundry 생성하기
+### Creating Microsoft Foundry
 
-Azure AI Foundry는 11월에 있었던 Microsoft Ignite에서 Microsoft로 브랜드가 변경되었습니다. 이번 단계에서는 Azure Portal에서 Microsoft Foundry 리소스를 생성하고 GPT-4.1 모델을 배포합니다.
+Azure AI Foundry was rebranded to Microsoft at Microsoft Ignite in November. In this step, we will create a Microsoft Foundry resource in the Azure Portal and deploy the GPT-4.1 model.
 
-1. Azure Portal 검색 창에 Microsoft Foundry를 입력합니다.
+1. Enter Microsoft Foundry in the Azure Portal search bar.
 
     <img src="images/step1-01.png" width="400"/>
 
-2. Microsoft Foundry 리소스를 생성합니다.
+2. Create a Microsoft Foundry resource.
 
     <img src="images/step1-02.png" width="720"/>
 
-3. 구독, 리소스 그룹, 리소스명을 선택 및 입력하고 지역은 "East US"를 선택합니다. 프로젝트명은 default로 남겨둡니다. 네트워크등의 탭은 기본 값으로 설정 후 "생성" 버튼을 눌러 리소스를 생성합니다.
+3. Select and enter the subscription, resource group, and resource name, and choose "East US" for the region. Leave the project name as default. Set other tabs like network to default values and click the "Create" button to create the resource.
 
     <img src="images/step1-03.png" width="600"/>
 
-4. 생성이 완료되면 default project로 이동하게 됩니다. Microsoft Foundry Project의 Endpoint와 Key 값을 볼 수 있습니다. 왼쪽 메뉴의 "Models + endpoints"를 클릭하여 모델 배포 작업을 해봅니다.
+4. Once creation is complete, you will be directed to the default project. You can see the Endpoint and Key values of the Microsoft Foundry Project. Click "Models + endpoints" in the left menu to deploy a model.
 
     <img src="images/step1-04.png" width="720"/>
 
-5. 이번 실습에서는 gpt-4.1 모델을 사용할 예정입니다. 구독에 할당량이 부족한 경우 gpt-4.1-mini등 다른 AOAI 모델을 사용해도 괜찮습니다.
+5. In this lab, we will use the gpt-4.1 model. If your subscription lacks sufficient quota, you can use other AOAI models such as gpt-4.1-mini.
 
     <img src="images/step1-05.png" width="600"/>
 
-6. Deployment type은 "Global Standard"로 선택하고 다른 값은 디폴트를 선택한 후 배포합니다. 배포된 모델명은 "gpt-4.1"로 선택하거나, 이름을 변경하였을 경우 해당 이름을 기록해 둡니다. 이후 코드 샘플에서 필요합니다.
+6. Select "Global Standard" for Deployment type, choose defaults for other values, and deploy. Select "gpt-4.1" as the deployed model name, or if you change the name, record that name. You will need it in the code samples later.
 
     <img src="images/step1-06.png" width="500"/>
 
-7. 모델 배포가 완료되면, Chat Playground에서 모델을 테스트해볼 수 있습니다. 왼쪽 메뉴의 "Chat playground"를 클릭합니다. 모델명 드롭다운에서 방금 배포한 모델명을 선택하고, 프롬프트에 "Hello, Microsoft Foundry!"를 입력한 후 "Submit" 버튼을 눌러봅니다. 
+7. Once the model deployment is complete, you can test the model in the Chat Playground. Click "Chat playground" in the left menu. Select the model name you just deployed from the model name dropdown, enter "Hello, Microsoft Foundry!" in the prompt, and click the "Submit" button.
 
     <img src="images/step1-07.png" width="720"/>
 
-8. "View code" 버튼을 클릭하면, Azure OpenAI의 endpoint를 볼 수 있습니다. 이 값을 기록해 두고 다음 단계의 환경변수 셋팅에서 사용합니다.
+8. Click the "View code" button to see the Azure OpenAI endpoint. Record this value and use it in the environment variable setup in the next step.
 
     <img src="images/step1-08.png" width="600"/>
 
-### Bing Grounding 생성하기
+### Creating Bing Grounding
 
-이번 단계에서는 Bing Grounding 리소스를 생성합니다. Bing Grounding은 Microsoft Agent Framework에서 제공하는 웹 검색 도구로, 에이전트가 실시간 정보를 검색할 수 있도록 도와줍니다.
+In this step, we will create a Bing Grounding resource. Bing Grounding is a web search tool provided by the Microsoft Agent Framework that helps agents search for real-time information.
 
-1. Azure Portal 검색 창에 Bing Resource를 입력합니다.
+1. Enter Bing Resource in the Azure Portal search bar.
 
     <img src="images/step2-01.png" width="400"/>
 
-2. "+Add" 버튼을 클릭하고 "Grounding with Bing Search"를 선택하여 Bing Grounding 리소스를 생성합니다.
+2. Click the "+Add" button and select "Grounding with Bing Search" to create a Bing Grounding resource.
 
     <img src="images/step2-02.png" width="400"/>
 
-3. 구독, 리소스 그룹, 리소스명을 선택 및 입력하고 지역은 "Global"를 선택합니다. 기본 가격 티어를 선택 후 "검토 + 생성" 버튼을 눌러 리소스를 생성합니다.
+3. Select and enter the subscription, resource group, and resource name, and choose "Global" for the region. Select the default pricing tier and click the "Review + create" button to create the resource.
 
     <img src="images/step2-03.png" width="600"/>
 
-4. 리소스 생성이 완료되면, "Go to resource" 버튼을 클릭하여 리소스 페이지로 이동합니다. Bing Grounding 리소스는 Microsoft Foundry Portal에서 사용되므로, Foundry Portal로 이동합니다.
+4. Once resource creation is complete, click the "Go to resource" button to navigate to the resource page. Since the Bing Grounding resource is used in the Microsoft Foundry Portal, navigate to the Foundry Portal.
 
     <img src="images/step2-04.png" width="600"/>
 
-5. Foundry Portal에서 "Management Center"를 클릭합니다. 
+5. Click "Management Center" in the Foundry Portal.
 
     <img src="images/step2-05.png" width="600"/>
 
-6. 왼쪽 메뉴에서 "Connected Resources"를 선택하고, "Create Connection" 버튼을 클릭합니다.
+6. Select "Connected Resources" from the left menu and click the "Create Connection" button.
 
     <img src="images/step2-06.png" width="600"/>
 
-7. Asset type에서 "Bing Grounding"을 선택합니다.
+7. Select "Bing Grounding" from the Asset type.
 
     <img src="images/step2-07.png" width="600"/>
 
-8. 이전 단계에서 생성한 Bing Grounding 리소스를 선택하고, "Add connection"" 버튼을 클릭합니다.
+8. Select the Bing Grounding resource you created in the previous step and click the "Add connection" button.
 
     <img src="images/step2-08.png" width="600"/>
 
-9. 연결이 완료되면, 연결된 리소스 목록에서 방금 생성한 Bing Grounding 연결을 확인할 수 있습니다. 해당 Grounding Name을 클릭하여 상세 정보를 확인합니다.
+9. Once the connection is complete, you can see the Bing Grounding connection you just created in the connected resources list. Click on the Grounding Name to view detailed information.
 
     <img src="images/step2-09.png" width="600"/>
 
-10. 연결된 Bing Grounding 리소스의 Connection ID를 기록해 둡니다. 이후 코드 샘플에서 필요합니다.
+10. Record the Connection ID of the connected Bing Grounding resource. You will need it in the code samples later.
 
-### 코드에서 Agent Framework 구현하기
+### Implementing Agent Framework in Code
 
-이제 사용할 Azure 리소스를 모두 생성하였으므로, 코드에서 Microsoft Agent Framework를 구현하는 단계로 넘어갑니다.
+Now that you have created all the Azure resources you will use, move on to the step of implementing the Microsoft Agent Framework in code.
 
-1. 환경 변수 설정하기
+1. Setting Environment Variables
 
-이번 단계에서는 앞서 생성한 Microsoft Foundry와 Bing Grounding 리소스의 정보를 환경 변수로 설정합니다. ./1_basic_agent/.env.sample 파일을 ./1_basic_agent/.env 파일로 변경하고 Azure OpenAI, Foundry Project, Bing Grounding 정보를 입력합니다.
+In this step, set the information of the Microsoft Foundry and Bing Grounding resources created earlier as environment variables. Change the ./1_basic_agent/.env.sample file to ./1_basic_agent/.env and enter the Azure OpenAI, Foundry Project, and Bing Grounding information.
 
-2. 코드 샘플 실행하기
+2. Running Code Samples
 
-코드 샘플은 Jupyter Notebook 형식으로 제공됩니다. 1_basic-concept-with-msaf.ipynb 파일을 열고, 각 셀을 순서대로 실행하여 Microsoft Agent Framework의 기본 컨셉을 이해합니다. 이번 실습에서는 아래의 세가지 케이스를 다룹니다.
+The code samples are provided in Jupyter Notebook format. Open the 1_basic-concept-with-msaf.ipynb file and execute each cell in order to understand the basic concepts of the Microsoft Agent Framework. In this lab, we cover the following three cases:
 
-* Case 1: 기본 에이전트 생성과 실행
-* Case 2: Custom Tools/Functions 활용한 Agents 
-* Case 4: Azure AI Agent Client를 활용한 엔터프라이즈 도구
+* Case 1: Creating and Running Basic Agents
+* Case 2: Agents Using Custom Tools/Functions
+* Case 4: Enterprise Tools Using Azure AI Agent Client
 
-[원본 Repository](https://github.com/Azure/agent-innovator-lab/blob/main/0_basic-agent/AgentFramework/README.md)에는 Case 3: Understand the differences b/w Agent Clients (Azure OpenAI Chat Client vs Azure AI Agent Client)도 포함되어 있으니, 시간 내셔서 전체 코드를 실습해 보시길 권장드립니다.
+The [original repository](https://github.com/Azure/agent-innovator-lab/blob/main/0_basic-agent/AgentFramework/README.md) also includes Case 3: Understand the differences b/w Agent Clients (Azure OpenAI Chat Client vs Azure AI Agent Client), so we recommend practicing the entire code when you have time.
 
-1_basic-concept-with-msaf.ipynb 파일의 코드를 모두 실행하신 분은 Part 2로 넘어가시면 됩니다.
+If you have executed all the code in the 1_basic-concept-with-msaf.ipynb file, you can proceed to Part 2.
 
-## 다음 단계
+## Next Steps
 
 * [Hands-on Lab 0 – Setup](2_00_setup.md)
 
-## 실습 순서
+## Lab Sequence
 
 ### Part 1
-* [Microsoft Agent Framework Basic Concept HoL](1_basic_concept.md)
+* [Microsoft Agent Framework Basic Concept HoL](00_basic_concept.md)
 
 ### Part 2
 * [Hands-on Lab 0 – Setup](2_00_setup.md)
 * [Hands-on Lab 1 – MCP Server](2_01_mcp_uv.md)
 * [Hands-on Lab 2 – Backend](2_02_backend_uv.md)
 * [Hands-on Lab 3 – Frontend](2_03_frontend.md)
-
