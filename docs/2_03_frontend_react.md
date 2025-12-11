@@ -2,94 +2,94 @@
 
 ## Step 4: Frontend Setup with React
 
-이 단계에서는 Microsoft AI Agentic Workshop을 위한 React 프론트엔드를 설정하고 실행합니다. React 프론트엔드는 실시간 토큰 단위 스트리밍과 내부 에이전트 프로세스 가시성을 제공하는 Microsoft Agent Framework 에이전트에 이상적인 고급 스트리밍 시각화를 제공합니다.
+This step sets up and runs the React frontend for the Microsoft AI Agentic Workshop. The React frontend provides advanced streaming visualization that is ideal for Microsoft Agent Framework agents, offering real-time token-by-token streaming and internal agent process visibility.
 
-## 사전 준비 사항
-- [Step 1: Workshop Setup](2_00_setup.md) 완료
-- [Step 2: MCP Setup (uv)](2_01_mcp_uv.md) 완료
-- [Step 3: Backend Setup (uv)](02_backend_uv.md) 완료
-- MCP 구동 확인: `http://localhost:8000/mcp`
-- Backend 서비스 구동 확인: `http://localhost:7000/chat`
+## Prerequisites
+- [Step 1: Workshop Setup](2_00_setup.md) completed
+- [Step 2: MCP Setup (uv)](2_01_mcp_uv.md) completed
+- [Step 3: Backend Setup (uv)](02_backend_uv.md) completed
+- MCP running verification: `http://localhost:8000/mcp`
+- Backend service running verification: `http://localhost:7000/chat`
 
-### 1. Node.js 설치
+### 1. Install Node.js
 
-React Frontend를 실행하려면 Node.js 16 이상과 npm이 필요합니다.
+Running the React Frontend requires Node.js 16 or higher and npm.
 
 > **Action Items:**
-> 새로운 터미널 창을 열고 MCP 서버 및 백엔드를 실행 중인 창과는 별도로 진행하세요.
+> Open a new terminal window, separate from the ones running the MCP server and backend.
 > ![new terminal](media/01_mcp_new_terminal.png)
-> Node.js와 npm이 설치되어 있는지 확인하세요:
+> Verify that Node.js and npm are installed:
 > ```bash
 > node --version  # Should be v16 or higher
 > npm --version   # Should be v8 or higher
 > ```
 > 
-> 설치되어 있지 않은 경우, 다음 설치 방법 중 하나를 선택하세요:
-> - **Windows/macOS/Linux:** [https://nodejs.org/](https://nodejs.org/)에서 LTS 버전을 다운로드하여 설치하세요.
-> - **Windows (대안):** `winget install OpenJS.NodeJS.LTS` 명령어를 사용하세요.
-> - **macOS (대안):** `brew install node` 명령어를 사용하세요.
+> If not installed, choose one of the following installation methods:
+> - **Windows/macOS/Linux:** Download and install the LTS version from [https://nodejs.org/](https://nodejs.org/).
+> - **Windows (alternative):** Use the command `winget install OpenJS.NodeJS.LTS`.
+> - **macOS (alternative):** Use the command `brew install node`.
 
-### 2. Frontend 설정 (optional)
+### 2. Frontend Configuration (optional)
 
-React frontend는 기본적으로 `http://localhost:7000`에 연결됩니다.
+The React frontend connects to `http://localhost:7000` by default.
 
 > **Action Items (Optional):**
-> Backend URL을 사용자 지정하려면 `react-frontend` 디렉터리에 `.env` 파일을 만드세요:
+> To customize the Backend URL, create a `.env` file in the `react-frontend` directory:
 > ```bash
 > # react-frontend/.env
 > REACT_APP_BACKEND_URL=http://localhost:7000
 > ```
 
-### 3. 의존성 설치 및 React 프론트엔드 시작
+### 3. Install Dependencies and Start React Frontend
 
 > **Action Items:**
-> `agentic_ai/applications`에서 React 프론트엔드 디렉터리로 이동하세요:
+> Navigate to the React frontend directory from `agentic_ai/applications`:
 > ```bash
 > cd react-frontend
 > ```
 > 
-> Dependencies 설치 (처음 실행 시 또는 package.json 변경 후):
+> Install Dependencies (first run or after package.json changes):
 > ```bash
 > npm install
 > ```
 > 
-> React 개발 서버 시작:
+> Start the React development server:
 > ```bash
 > npm start
 > ```
 > 
-> React 앱이 자동으로 `http://localhost:3000`에서 열립니다. 자동으로 열리지 않으면 브라우저에서 `http://localhost:3000`으로 이동하세요.
+> The React app will automatically open at `http://localhost:3000`. If it doesn't open automatically, navigate to `http://localhost:3000` in your browser.
 
-## 성공 기준
-- React frontend가 `http://localhost:3000`에서 실행 중이어야 합니다.
-- Frontend가 성공적으로 Backend에 `http://localhost:7000`으로 연결되어야 합니다.
-- Chat 인터페이스로 AI 에이전트와 상호작용할 수 있어야 합니다.
-- 실시간 스트리밍 및 에이전트 프로세스 visibility가 작동해야 합니다.
+## Success Criteria
+- React frontend should be running at `http://localhost:3000`.
+- Frontend should successfully connect to Backend at `http://localhost:7000`.
+- You should be able to interact with the AI agent through the Chat interface.
+- Real-time streaming and agent process visibility should be working.
 
     <img src="media/03_frontend_react_chat.png" />
 
-> Note: 아래의 프롬프트를 사용하여 에이전트와 상호작용해 보세요:
+> Note: Try interacting with the agent using the following prompt:
 > ```
 > What can you help me with?
 > ```
 
-- 에이전트와 채팅하고 실시간 토큰 스트리밍 및 내부 에이전트 동작(예: 도구 호출, 계획 단계)을 관찰하세요.
+- Chat with the agent and observe real-time token streaming and internal agent behavior (e.g., tool calls, planning steps).
 
     <img src="media/03_frontend_magentic_steps.png" />
 
-> Note: 아래의 프롬프트를 사용하여 내부 에이전트 동작을 확인 해 보세요:
+> Note: Use the following prompt to check internal agent behavior:
 > ```
 > Please retrieve the most recent invoice for customer 101, including line items and total charges. Additionally, compare it with previous invoices to identify why the latest invoice is higher and note any new charges, fee changes, expired discounts, upgrades, or other relevant issues. Cite relevant tool results and data references in your response.
 > ```
   
-## 트러블슈팅
-- **포트 3000이 이미 사용 중인가요?** React 앱이 다른 포트를 사용하겠냐고 묻습니다. `Y`를 입력하여 수락하세요.
-- **npm install이 실패하나요?** npm 캐시를 지우고 다시 시도해 보세요: `npm cache clean --force`
-- **WebSocket 연결 오류가 발생하나요?** 백엔드가 포트 7000에서 실행 중인지, 방화벽이 연결을 차단하지 않는지 확인하세요.
+## Troubleshooting
+- **Is port 3000 already in use?** The React app will ask if you want to use a different port. Enter `Y` to accept.
+- **npm install failing?** Try clearing the npm cache and retry: `npm cache clean --force`
+- **WebSocket connection errors?** Verify that the backend is running on port 7000 and that the firewall is not blocking the connection.
 
-**축하합니다**: 모든 단계를 성공적으로 완료했다면, 설정이 완료되었으며 에이전트가 실행 중이어야 합니다! 자세한 내용은 [작동 원리 →](2_04_how_it_works.md)에서 확인하세요.
+**Congratulations**: If you have successfully completed all steps, the setup is complete and your agents should be running! For more details, see [How It Works →](2_04_how_it_works.md).
 
-## 실습 순서
+## Lab Sequence
 
 ### Part 1
 * [Microsoft Agent Framework Basic Concept HoL](00_basic_concept.md)
