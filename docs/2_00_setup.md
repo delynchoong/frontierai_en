@@ -1,30 +1,30 @@
 # Part 2: Microsoft AI Agentic Workshop
 
-> Note: 워크샵 시나리오 개요는 설정을 시작하기 전에 [여기](SCENARIO.md)에서 읽어보세요.
+> Note: Read the workshop scenario overview [here](SCENARIO.md) before starting setup.
 
 ## Step 1: Workshop Setup
-이 단계에서는 워크샵을 실행하는 데 필요한 리포지토리를 복제하고, Azure AI Foundry에서 LLM 모델을 배포하고, 환경 변수를 설정하는 방법을 안내합니다.
+This step guides you through cloning the repository needed to run the workshop, deploying LLM models in Azure AI Foundry, and setting up environment variables.
 
-## 사전준비사항
-- Azure 구동
-- 사전 지식:
-    - Azure 구독과 리소스
-    - Github Mechanics (계정 생성, 리포지토리 복제 등)
+## Prerequisites
+- Azure Subscription
+- Prior Knowledge:
+    - Azure subscriptions and resources
+    - GitHub Mechanics (account creation, repository cloning, etc.)
   
-### 1. 리포지토리 및 .env 파일 위치 확인ㅁ
+### 1. Verify Repository and .env File Locations
 
-Part 2에서 진행 할 AI 애플리케이션은, 이전 단계에서 Clone 한 `FrontierAI` 리포지토리의 mcp와 agentic_ai에서 구동됩니다.
-> Part 2의 Hands-on Lab에서는 2개의 .env 파일을 사용합니다.
-* ./mcp/.env.sample ==> MCP server를 위한 .env
-* ./agentic_ai/application/.env.sample ==> Agent application을 위한 .env
+The AI application to be run in Part 2 will operate from the mcp and agentic_ai directories in the `FrontierAI` repository cloned in the previous step.
+> Part 2's Hands-on Lab uses 2 .env files.
+* ./mcp/.env.sample ==> .env for MCP server
+* ./agentic_ai/application/.env.sample ==> .env for Agent application
 
-### 2. Microsoft Foundry에서 LLM 모델 배포
+### 2. Deploy LLM Model in Microsoft Foundry
 
-[이전 단계](1_basic_concept.md)에서 배포한 Microsoft Foundry 프로젝트와 GPT-4.1 모델을 사용합니다.
+Use the Microsoft Foundry project and GPT-4.1 model deployed in [the previous step](1_basic_concept.md).
   
-### 3. 환경 변수 설정 
+### 3. Set Environment Variables
   
-`agentic_ai/applications` 폴더의 `.env.sample` 파일 이름을 `.env`로 변경하고, 필요한 모든 필드를 채웁니다. 다음은 샘플 구성입니다:  
+Rename the `.env.sample` file in the `agentic_ai/applications` folder to `.env` and fill in all required fields. Here is a sample configuration:  
   
 ```bash  
 ############################################  
@@ -33,7 +33,7 @@ Part 2에서 진행 할 AI 애플리케이션은, 이전 단계에서 Clone 한 
 # Replace with your model-deployment endpoint in Azure AI Foundry  
 AZURE_OPENAI_ENDPOINT="https://YOUR-OPENAI-SERVICE-ENDPOINT.openai.azure.com"  
   
-# Replace with your Foundry project’s API key  
+# Replace with your Foundry project's API key  
 AZURE_OPENAI_API_KEY="YOUR-OPENAI-API-KEY"  
   
 # Connection-string that identifies your Foundry project / workspace. Only needed if you're using Azure Agent Service
@@ -64,21 +64,21 @@ AGENT_MODULE="agents.agent_framework.single_agent"
 DATA_TENANT_ID="default"  
 ```
   
-### 4. Microsoft Foundry에 임베딩 모델 배포
+### 4. Deploy Embedding Model to Microsoft Foundry
 
-1. Microsoft Foundry에서 동일한 프로젝트 내에서 **Models + endpoints**에서 모델 배포를 합니다.
+1. In Microsoft Foundry, deploy a model from **Models + endpoints** within the same project.
     
     <img src="images/step3-01.png" width="720"/>
 
-2. text-embedding-ada-002 모델을 선택합니다.
+2. Select the text-embedding-ada-002 model.
 
     <img src="images/step3-02.png" width="500"/>
 
-3. 배포 타입으로 **Global Standard**를 선택하고, 원하는 경우 **Korea Central** 지역을 선택합니다.
+3. Select **Global Standard** for deployment type, and optionally select the **Korea Central** region.
 
     <img src="images/step3-03.png" width="500"/>
 
-4. 소스 리포지토리에서 루트 폴더로 이동한 후, `mcp` 폴더로 이동하여 `.env.sample` 파일 이름을 `.env`로 변경하고, 필요한 모든 필드를 채웁니다. 다음은 샘플 구성입니다:
+4. From the source repository, navigate to the root folder, then go to the `mcp` folder, rename the `.env.sample` file to `.env`, and fill in all required fields. Here is a sample configuration:
   
     ```bash
     # This file is a sample configuration for the MCP backend services's knowledge retrieval APIs which uses text-embedding-ada-002 embedding model
@@ -94,16 +94,16 @@ DATA_TENANT_ID="default"
     ```
 
 
-**Azure 리소스가 올바른 모델 배포 이름, 엔드포인트 및 API 버전을 사용하도록 구성되었는지 확인하세요.**
+**Ensure your Azure resources are configured with the correct model deployment names, endpoints, and API versions.**
   
 ---
 
-## 다음 단계: MCP Server
-`.env` 파일이 구성되면 MCP 서버를 시작할 수 있습니다.
+## Next Step: MCP Server
+Once the `.env` file is configured, you can start the MCP server.
 
 * [Hands-on Lab 1 – MCP Server](2_01_mcp_uv.md)
 
-## 실습 순서
+## Lab Sequence
 
 ### Part 1
 * [Microsoft Agent Framework Basic Concept HoL](00_basic_concept.md)
