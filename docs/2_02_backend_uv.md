@@ -2,43 +2,43 @@
 
 ## Step 3: Application Backend Server
 
-이 단계에서는 uv를 사용하여 Microsoft AI Agentic Workshop을 위한 백엔드 서비스를 구성하고 실행합니다. 백엔드는 고급 멀티 에이전트 기능을 갖춘 Microsoft의 Agent Framework를 완벽하게 지원합니다.
+This step configures and runs the backend service for the Microsoft AI Agentic Workshop using uv. The backend fully supports Microsoft's Agent Framework with advanced multi-agent capabilities.
 
-## 사전 준비 사항
-- [Step 1: Workshop Setup](2_00_setup.md) 완료
-- [Step 2: MCP Setup (uv)](2_01_mcp_uv.md) 완료
-- MCP 구동 확인: `http://localhost:8000/mcp`
-- uv 설치 완료
+## Prerequisites
+- [Step 1: Workshop Setup](2_00_setup.md) completed
+- [Step 2: MCP Setup (uv)](2_01_mcp_uv.md) completed
+- MCP running verification: `http://localhost:8000/mcp`
+- uv installation completed
 
-## Microsoft Agent Framework 옵션
+## Microsoft Agent Framework Options
 
 **Single Agent (`agents.agent_framework.single_agent`):**
 
-- 하나의 에이전트가 모든 작업을 처리하는 방식. (단순한 시나리오에 적합: FAQ, 기본 지원 등)
-- MCP 도구를 사용하는 기본 ChatAgent
-- WebSocket을 통한 토큰 단위 스트리밍
-- React UI에서 도구 호출 가시화
-- 요청 간 세션 상태 지속(persistence)
+- One agent handles all tasks. (Suitable for simple scenarios: FAQ, basic support, etc.)
+- Basic ChatAgent using MCP tools
+- Token-by-token streaming via WebSocket
+- Tool call visualization in React UI
+- Session state persistence across requests
 
 **Magentic Multi-Agent (`agents.agent_framework.multi_agent.magentic_group`):**
-- 여러 에이전트가 협업 대화를 통해 문제를 해결하는 패턴.
-- 지능적인 오케스트레이터가 전문 에이전트(CRM/청구, 제품/프로모션, 보안)를 조율
-- 오케스트레이터 계획 및 에이전트 응답의 실시간 스트리밍
-- Human-in-the-loop 지원을 위한 맞춤형 진행 레저(progress ledger를 제공)  
-- 재개 가능한 워크플로우를 위한 체크포인팅 기능 기원
-- React UI는 전체 내부 프로세스 표시: 작업 레저, 지시사항, 에이전트 도구 호출
+- Multiple agents solve problems through collaborative dialogue.
+- Intelligent orchestrator coordinates specialized agents (CRM/Billing, Product/Promotion, Security)
+- Real-time streaming of orchestrator plans and agent responses
+- Custom progress ledger for human-in-the-loop support
+- Checkpointing for resumable workflows
+- React UI displays entire internal process: task ledger, instructions, agent tool calls
 
 **Handoff Multi-Agent (`agents.agent_framework.multi_agent.handoff_multi_domain_agent`):**
-- 작업을 처리하는 도중, 더 적합한 에이전트에게 동적으로 위임하는 패턴
-- 지능형 도메인 라우팅을 통한 에이전트-사용자 직접 통신
-- 전문가 간 컨텍스트 전송 설정 가능 (고객 정보와 히스토리 유지)
-- 원활한 핸드오프를 위한 스마트 인텐트 분류
-- 비용 효율적 (오케스트레이터 패턴 대비 LLM 호출 33% 감소)
+- Pattern that dynamically delegates to more suitable agents while handling tasks
+- Direct agent-user communication with intelligent domain routing
+- Configurable context transfer between specialists (maintaining customer information and history)
+- Smart intent classification for seamless handoffs
+- Cost-efficient (33% fewer LLM calls compared to orchestrator pattern)
 
-### 1. Agent Framework 설정
+### 1. Agent Framework Setup
 
 > **Action Items:**
-> `agentic_ai/applications` 폴더 내에 있는 `.env` 파일에서 다음 줄 중 하나의 주석 처리를 해제하세요:
+> In the `.env` file in the `agentic_ai/applications` folder, uncomment one of the following lines:
 > ```bash
 > # In your .env file in agentic_ai/applications folder, uncomment one of following for agent framework:
 > AGENT_MODULE="agents.agent_framework.single_agent"
@@ -62,12 +62,12 @@
 > HANDOFF_CONTEXT_TRANSFER_TURNS=-1  # -1=all history, 0=none, N=last N turns
 > ```
   
-📚 **[자세한 패턴 가이드 확인 및 설정 →](../agentic_ai/agents/agent_framework/README.md)**
+📚 **[Check detailed pattern guide and settings →](../agentic_ai/agents/agent_framework/README.md)**
 
-### 2. Backend 서비스 실행
+### 2. Run Backend Service
 
 > **Action Items:**
-> 터미널 창을 새로 열고 MCP 서버가 실행 중인 창과는 별도로 진행하세요.
+> Open a new terminal window, separate from the one running the MCP server.
 > ![new terminal](media/01_mcp_new_terminal.png)
 > Navigate to the applications directory and start the backend:
 > ```bash
@@ -75,9 +75,9 @@
 > uv run python backend.py
 > ```
 
-### 3. 프론트엔드 경험 선택
+### 3. Choose Frontend Experience
 
-## 📊 Frontend 비교
+## 📊 Frontend Comparison
 
 | Feature | React Frontend | Streamlit Frontend |
 |---------|---------------|-------------------|
@@ -89,18 +89,18 @@
 | **Setup complexity** | Medium (npm install) | Low (no additional setup) |
 | **Best use case** | Development, demos, debugging | Quick testing, simple chat |
 
-**권장:**
-- React를 사용: Agent Framework 에이전트의 전체 다중 에이전트 오케스트레이션을 확인하세요.
-- Streamlit을 사용: 모든 에이전트 유형의 빠른 테스트 또는 간단한 데모를 진행하세요.
-- 본 실습에서는 React 프론트엔드를 사용합니다.
+**Recommendation:**
+- Use React: See the full multi-agent orchestration of Agent Framework agents.
+- Use Streamlit: Conduct quick testing or simple demos of all agent types.
+- This lab uses the React frontend.
 
-## 성공 기준
-- Backend 서비스가 `http://localhost:7000`에서 실행 중이어야 합니다.
+## Success Criteria
+- Backend service should be running at `http://localhost:7000`.
 
-- Agent Framework이 적절히 구성되어야 합니다.
+- Agent Framework should be properly configured.
 
-- Backend가 MCP 서버와 통신할 수 있어야 합니다.
-  - Backend 서버를 검증할 수 있는 아래의 샘플 powershell 명령어를 실행해보세요:
+- Backend should be able to communicate with the MCP server.
+  - Run the sample PowerShell command below to validate the Backend server:
     ```powershell
     # Define the URL
     $uri = "http://localhost:7000/chat"
@@ -124,19 +124,26 @@
     $response.Content
     ```
     <img src="media/02_backend_chat_response.png" />
+ 
+  - A sample curl command to validate things are online:
+    ```bash
+    `curl -X 'POST' 'http://localhost:7000/chat'  -H 'accept: application/json'  -H 'Content-Type: application/json'  -d '{"session_id": "123", "prompt": "What can you help me with?"}'`
+    ```
 
+- Backend should be able to communicate with the MCP server.
+  - Sample curl command to check online status: `curl -X 'POST' 'http://localhost:7000/chat'  -H 'accept: application/json'  -H 'Content-Type: application/json'  -d '{"session_id": "123", "prompt": "What can you help me with?"}'`
 
-    **Note:** 로컬 서버는 AI 응답을 반환하지 않습니다. 브라우저에서 확인하는 경우 아래와 같은 에러는 예상되는 동작입니다.
+    **Note:** The local server does not return AI responses. If checking in a browser, the error below is expected behavior.
 
     <img src="media/02_backend_localhost_err.png" />
 
-- 프론트엔드와 연결할 준비가 되어 있어야 합니다.
+- Should be ready to connect with the frontend.
 
-## 다음 단계: Frontend 서비스
+## Next Step: Frontend Service
 
 * [Hands-on Lab 3 – Frontend](2_03_frontend_react.md)
 
-## 실습 순서
+## Lab Sequence
 
 ### Part 1
 * [Microsoft Agent Framework Basic Concept HoL](00_basic_concept.md)
@@ -148,5 +155,4 @@
 * [Hands-on Lab 3 – Frontend](2_03_frontend_react.md)
 
 
-**📌 Important:** Agent Framework은 **React 프론트엔드**와 함께 사용할 때 내부 에이전트 프로세스, 오케스트레이터 계획 및 도구 호출을 실시간으로 시각화하는 데 가장 적합합니다.
-
+**📌 Important:** Agent Framework works best with the **React frontend** when visualizing internal agent processes, orchestrator plans, and tool calls in real-time.
