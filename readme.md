@@ -42,7 +42,7 @@ This hands-on course is part of the Partner Frontier AI campaign, a technical co
 Run the following command in the terminal to clone the repository:
 
 ```bash 
-git clone https://github.com/jeongaelee/frontierai.git
+git clone https://github.com/asiapartners/frontierai_en.git
 ```
 
 ## Azure Resources and Environment Used
@@ -77,3 +77,4 @@ This hands-on lab uses 3 .env files. Each .env file is used for the following pu
 * The basic-concept-with-msaf.ipynb code in Part 1 was sourced from [Agent Innovator Lab](https://github.com/Azure/agent-innovator-lab). The Agent Innovator Lab repository is operated by Microsoft's AI GBB team and provides hands-on learning materials for developing AI agents based on Microsoft Azure. This repository supports developers in building and improving agents in real-world environments through various modules including RAG implementation, agent design patterns, and evaluation and optimization techniques.
 
 * Part 2's [Microsoft AI Agentic Workshop](https://github.com/aseangps/OpenAIWorkshop) is a Microsoft-provided repository that offers workshop materials and code for building OpenAI-based intelligent solutions. Through this repository, developers can practice various patterns from single agents to multi-agent architectures using the Microsoft Agent Framework and Azure OpenAI services.
+
